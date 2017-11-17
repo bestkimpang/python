@@ -1,0 +1,11 @@
+#the content of file will be overwritten.
+import os
+from datetime import datetime 
+os.chdir(r'd:\1')
+os.listdir()
+file = open(r'log.txt','w')
+timenow=datetime.now()
+val=str(timenow)
+file.write(val)
+print (file.write(val))       -->打印插入的字符数
+file.close()
