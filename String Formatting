@@ -7,4 +7,10 @@ print(msg)
 Numbers: 4 5 6
 >>>
 
+print("{0}{1}{0}".format("abra", "cad"))
+
+>>>
+abracarabra
+>>>
+
 #Each argument of the format function is placed in the string at the corresponding position, which is determined using the curly braces { }.
