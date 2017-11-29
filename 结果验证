@@ -1,0 +1,33 @@
+####信息获取####
+import time
+a=[]
+i=0
+while i<5:
+    i=i+1
+    current=time.time()
+    a.append(current)
+    time.sleep(2)
+####结果验证####    
+Bb=len(a)
+k=0
+while k<Bb-1:
+    k=k+1
+    if int(a[k]-a[k-1])==2:
+        print (k)  
+ 
+以上，输出结果是1，2，3，4，不输出0是因为不存在a[0]-a[-1]
+
+####将每次的时间记录到1.txt中####
+import time
+fout = open(r'e:\\1.txt','w')
+tmp = time.time()
+fout.write(tmp)
+fout.close()
+
+
+####配置windows python程序自动启动####
+http://www.jb51.net/article/61939.htm
+
+####tinycorelinux####
+http://www.360doc.com/content/16/0119/01/3884271_528982189.shtml
+http://www.linuxidc.com/Linux/2008-08/15212.htm
