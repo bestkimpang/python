@@ -17,11 +17,13 @@ while k<Bb-1:
  
 以上，输出结果是1，2，3，4，不输出0是因为不存在a[0]-a[-1]
 
-####将每次的时间记录到1.txt中####
+#########################将每次的时间记录到1.txt中#######################
 import time
-fout = open(r'e:\\1.txt','w')
+fout = open(r'c:\1\1.txt','a+')
 tmp = time.time()
-fout.write(tmp)
+tmp1=str(tmp)
+fout.write(tmp1)
+fout.write(',')
 fout.close()
 
 
