@@ -1,0 +1,73 @@
+import time   #导入时间函数，使用time.time()即可获取1970年1月1日到当前时间有多少秒，可以精确到小数点后7位，很方便计算时间差
+
+#记录圈数
+
+
+loops=open(r"c:\1\loops.txt",'r')
+loop_now=loops.read()
+loops.close()
+
+#第一圈时loops.txt为空，所以需要先写入“1”
+if loop_now=='':
+    open_loops=open(r'c:\1\loops.txt','w')
+    open_loops.write('1')
+    open_loops.close()
+
+#第二圈以后，每圈结束时将圈数+1，并将结果保存在loops.txt中并覆盖旧的圈数
+else:
+    cycle=float(loop_now)
+    loops_new=open(r'c:\1\loops.txt','w+')
+    last_loop=int(cycle+1)
+    last_loop_str=str(last_loop)
+    loops_new.write(last_loop_str)
+    loops_new.close()
+
+
+
+#处理时间
+
+
+realtime=open(r"c:\1\last_time.txt",'r')
+last_time=realtime.read()
+realtime.close()
+
+#记录第一次开机的时间，并保存在last_time.txt中；
+if last_time=='':
+    write_time=open(r'c:\1\last_time.txt','w')
+    first_time=time.time()
+    first_time_1=str(first_time)
+    write_time.write(first_time_1)
+    write_time.close()
+    
+#读取last_time.txt中的时间，计算本次和上次的时间差，并将本次的时间保存在last_time.txt中，覆盖掉上次的时间；
+else:    
+    last_time_1=float(last_time)
+    calcu_time=open(r'c:\1\last_time.txt','w+')
+    real_time=time.time()                   
+    real_time_1=float(real_time)
+    real_time_2=str(real_time)
+    next_time=calcu_time.write(real_time_2)
+    interval_time=real_time_1-last_time_1    #计算时间差
+    interval_time_1=round(interval_time,2)   #对时间差精确到小数点后两位
+    print (interval_time_1)
+    calcu_time.close()
+    
+
+
+#计算本次和上次的时间差，如果大于150秒则Fail,记录上次的圈数至log档，无论Fail or Pass都会继续运行
+
+
+    interval=round(interval_time_1)         #将时间差转化为整数
+    if interval>15:
+        acquire_loop=open(r"c:\1\loops.txt",'r')
+        loops=acquire_loop.read()
+        loop=float(loops)-1                #提取Fail的圈数
+        loop1=round(loop)
+        acquire_loop.close()
+        
+        #将Fail的圈数写入log.txt中
+        save_log=open(r'c:\1\log.txt','a+')
+        write_log=str(loop1)
+        save_log.write(write_log)
+        save_log.write(',')                 #将Fail的圈数用','隔开，方便辨认
+        save_log.close()
