@@ -33,4 +33,4 @@ driver.execute_script(js7)
 js8= " window.open('https://www.bilibili.com/')" 
 driver.execute_script(js8)
 js9= " window.open('https://weibo.com/')" 
-driver.execute_script(js9
+driver.execute_script(js9)
